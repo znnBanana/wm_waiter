@@ -5,11 +5,19 @@ import Manager from '../views/manager/Index'
 import Home from '../views/manager/Home'
 import Order from '../views/manager/Order'
 import User from '../views/manager/User'
+import EditInfo from '../views/manager/EditInfo'
+import Realname from '../views/manager/Realname'
+import Myorder from '../views/manager/Myorder'
 import Address from '../views/manager/address/List'
 import AddressEdit from '../views/manager/address/Edit'
+import IncomeList from '../views/manager/income/List'
+import IncomeDetails from '../views/manager/income/Details'
+import Withdraw from '../views/manager/income/Withdraw'
 import OrderConform from '../views/manager/order/Conform'
 // 登录页面
 import Login from '../views/Login'
+// 注册页面
+import Register from '../views/Register'
 import { getToken } from '../utils/auth'
 import { Toast } from 'vant'
 import store from '../store'
@@ -20,7 +28,7 @@ Vue.use(VueRouter)
 const routes = [
   {
     path:"/",
-    redirect:"/manager/home"
+    redirect:"/manager/user"
   },
   {
     path: '/manager',
@@ -51,11 +59,29 @@ const routes = [
       path: 'user',
       component: User,
     },{
+      path: 'edit_info',
+      component: EditInfo,
+    },{
+      path: 'realname',
+      component: Realname,
+    },{
+      path: 'myorder',
+      component: Myorder,
+    },{
       path: 'address',
       component: Address
     },{
       path: 'address_edit',
       component: AddressEdit
+    },{
+      path: 'income_list',
+      component: IncomeList
+    },{
+      path: 'income_details',
+      component: IncomeDetails
+    },{
+      path: 'withdraw',
+      component: Withdraw
     },{
       path: 'order_conform',
       component: OrderConform
@@ -65,6 +91,11 @@ const routes = [
     path: '/login',
     name: 'login',
     component: Login
+  },
+  {
+    path: '/register',
+    name: 'register',
+    component: Register
   },
   
 ]

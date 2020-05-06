@@ -1,61 +1,61 @@
 <template>
   <div class="order_item">
-    <van-row class="header"> 
-      <van-col span="12">订单编号: {{data.id}}</van-col>
-      <van-col span="12" class="status">{{data.status}}</van-col>
-    </van-row>
-    <van-row>
-      <van-col :span="24" :offset="1">
-        <div v-if="data.waiter!=null">
-          员工姓名：
-          {{data.waiter.realname}} 
+    <div v-if="data.length > 0">
+      <van-panel :title="o.customer.realname" :status="o.status" v-for="o in data" :key="o.id">
+        <!-- {{o}} -->
+        <van-row>
+          <van-col :span="4" style="text-align:center"><van-icon name="balance-o" /></van-col>
+          <van-col :span="10">总额： {{o.total}}</van-col>
+          <!-- <van-col :span="10">收益： {{}}</van-col> -->
+        </van-row>
+        <van-row>
+          <van-col :span="4" style="text-align:center"><van-icon name="clock-o" /></van-col>
+          <van-col :span="20">下单时间：{{o.orderTime | datefmt}}</van-col>
+        </van-row>
+        <van-row>
+          <van-col :span="4" style="text-align:center"><van-icon name="orders-o" /></van-col>
+          <van-col :span="20">
+            服务产品：{{o.orderLines[0].product.name}}
+          </van-col>
+        </van-row>
+        <van-row>
+          <van-col :span="4" style="text-align:center"><van-icon name="description" /></van-col>
+          <van-col :span="20">
+            服务内容：{{o.orderLines[0].product.description}}
+          </van-col>
+        </van-row>
+        <van-row>
+          <van-col :span="4" style="text-align:center"><van-icon name="location-o" /></van-col>
+          <van-col :span="20">地址： {{o.address.province+" "+o.address.city+" "+o.address.area}}</van-col>
+        </van-row>
+        <div slot="footer" style="text-align:right">
+          <div v-if="o.status === '待接单'">
+            <van-button size="small" type="warning" plain @click="rejectHandler(o.id)">拒绝</van-button>&nbsp;
+            <van-button size="small" type="primary" plain @click="acceptHandler(o.id)">接受</van-button> 
+          </div>
+          <div v-else-if="o.status === '待服务'">
+            <van-button size="small" type="warning" plain @click="serviceCompleteHandler(o.id)">完成</van-button>&nbsp;
+          </div>
         </div>
-        <div v-if="data.waiter!=null">
-          员工联系方式：
-          {{data.waiter.telephone}} 
-        </div>
-        <div>总价：{{data.total}}</div>
-        <div>服务时间：{{data.orderTime | datefmt}}</div>
-        <div>服务地点：
-          {{data.address.province}} 
-          {{data.address.city}}
-          {{data.address.area}}
-          {{data.address.address}}
-        </div>
-      </van-col>
-    </van-row>
-    <div class="text-right">
-      共计 1 个服务，合计￥ {{data.total}}
+      </van-panel>
     </div>
+    
   </div>
 </template>
 <script>
 export default {
-  props:{
-    data:{type:Object}
+  props:["data"],
+  methods:{
+    rejectHandler(orderId){
+      this.$emit('reject',orderId);
+    },
+    acceptHandler(orderId){
+      this.$emit('accept',orderId);
+    },
+    serviceCompleteHandler(orderId){
+      this.$emit('complete',orderId);
+    }
+    
   }
 }
 </script>
-<style scoped>
-.order_item {
-  margin: .5em 1em;
-  padding: .5em;
-  border-radius: 5px;
-  background: #ffffff;
-}
-.order_item .header {
-  line-height: 2.5em;
-  font-size: 14px;
-}
-.order_item .header .status {
-  text-align: right;
-  font-size: 12px;
-  color: #fd621f;
-}
-.order_item img {
-  width: 100%;
-  border-radius: 3px;
-}
-
-
-</style>

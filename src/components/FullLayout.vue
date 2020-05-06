@@ -14,7 +14,8 @@ export default {
   props:['title'],
   methods:{
      backHandler(){
-      this.$router.go(-1)
+      // this.$router.go(-1)
+      this.$emit('back');
     }
   }
 }

@@ -1,10 +1,10 @@
 <template>
   <div class="login">
     <div class="header">
-      <div class="logo">家</div>
+      <div class="logo"><i class="iconfont icon-waimai2"></i></div>
       <div class="title">
-        家政服务云平台
-        <span style="font-size:.8em">顾客端</span>
+        飞毛腿 外卖服务云平台 <br>
+        <span style="font-size:.7em;float:right;padding:.5em 1em">  员工端</span>
       </div>
     </div>
     <div class="form">
@@ -30,7 +30,14 @@
         plain round 
         @click="loginHandler" 
         style="width:100%">登录</van-button>
-      </div>
+        <!-- 注册 -->
+        <div class="register">
+          <button @click="RegisterHandler">
+            尚未注册，点击注册
+          </button>
+        </div>
+        <!-- /注册 -->
+      </div>     
     </div>
   </div>
 </template>
@@ -40,23 +47,36 @@ export default {
   data(){
     return {
       form:{
-        type:'customer'
+        type:'waiter'
       }
     }
   },
   methods:{
     ...mapActions("user",["login"]),
+    // 跳转注册页面
+    RegisterHandler(){
+      // alert(1)
+      this.$router.push({path:'/register'})
+    },
     loginHandler(){
       this.login(this.form)
       .then(()=>{
         //跳转到首页
-        this.$router.push({path:'/manager/home'})
+        this.$router.push({path:'/manager/user'})
       })
     }
   }
 }
 </script>
 <style scoped>
+.register{
+  margin:1em;
+  font-size:12px;
+  color:green;
+}
+.register button{
+  border:none
+}
 .header {
   height: 140px;
   padding: 50px;
@@ -69,12 +89,15 @@ export default {
   height: 50px;
   line-height: 50px;
   border-radius: 50%;
-  border: 1px solid #efefef;
+  /* border: 1px solid #efefef; */
   margin: 0 auto;
   color:#efefef;
   font-weight: bold;
   margin-bottom: 1em;
-  font-size: 1.5em
+  font-size: 3em
+}
+.header .logo i {
+  font-size: 1.5em;
 }
 .header .title {
   font-size: 24px;

@@ -2,35 +2,21 @@
   <div class="home">
     <!-- 顶部导航栏 -->
     <div class="title">
-      <van-row>
+      <!-- <van-row>
         <van-col span="4">
           <van-icon size="30" @click="CloseHome" style="padding:16px" name="cross" color="#333333"/>
         </van-col>
         <van-col :offset="2" span="18" style="font-size:20px;color:#333333;padding:16px;text-align:left">飞毛腿外卖服务平台</van-col>
-      </van-row>
+      </van-row> -->
+      <van-nav-bar
+        title="我的"
+        left-text="返回"
+        left-arrow
+        @click-left="onClickLeft"
+        />
     </div>
     <!-- /顶部导航栏 -->
-    <!-- 佣金余额 -->
-    <!-- <van-grid clickable :column-num="2">
-      <van-grid-item icon="home-o" :text="IncomeTotal" to="./income_list" />
-      <van-grid-item icon="search" text="我的余额" to="" />
-    </van-grid> -->
     
-      <van-row>
-        <van-col :span="12">
-          <div class="income">
-            <div class="income_one">收益金额</div>
-            <div class="income_two">{{IncomeTotal}} 元</div>
-          </div>
-        </van-col>
-        <van-col :span="12">
-          <div class="income">
-            <div class="income_one">我的金额</div>
-            <div class="income_two">{{waiterInfo.money}} 元</div>
-          </div>
-        </van-col>
-      </van-row>
-    <!-- /佣金余额 -->
     <!-- 员工信息 -->
     <van-cell-group>
       <van-field
@@ -124,6 +110,10 @@ export default {
   },
   methods: {
     ...mapActions('user',['EarningWaiter','WaiterById','UpdateWaiter']),
+    // 回到我的页面
+    onClickLeft(){
+        this.$router.push({path:'./user'})
+    },
     // 修改员工信息
     SaveWaiterHandler(){
       this.params = {
