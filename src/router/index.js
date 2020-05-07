@@ -28,7 +28,7 @@ Vue.use(VueRouter)
 const routes = [
   {
     path:"/",
-    redirect:"/manager/user"
+    redirect:"/manager/order"
   },
   {
     path: '/manager',

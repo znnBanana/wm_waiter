@@ -23,35 +23,35 @@
         v-model="waiterInfo.username"
         label="会员名"
         left-icon="smile-o"
-        placeholder="显示图标"
+        placeholder="请输入会员名"
       />
       <van-field
         v-model="waiterInfo.realname"
         clearable
         label="真实姓名"
         left-icon="music-o"
-        placeholder="显示清除图标"
+        placeholder='请输入真实姓名'
       />
       <van-field
         v-model="waiterInfo.telephone"
         clearable
         label="联系方式"
         left-icon="music-o"
-        placeholder="显示清除图标"
+        placeholder="请输入联系方式"
       />
       <van-field
         v-model="waiterInfo.idCard"
         clearable
         label="身份证号"
         left-icon="music-o"
-        placeholder="显示清除图标"
+        placeholder="请输入身份证号"
       />
       <van-field
         v-model="waiterInfo.bankCard"
         clearable
         label="银行卡号"
         left-icon="music-o"
-        placeholder="显示清除图标"
+        placeholder="请输入银行卡号"
       />
     </van-cell-group>
     <van-cell-group>

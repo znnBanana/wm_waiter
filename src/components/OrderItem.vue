@@ -1,32 +1,39 @@
 <template>
-  <div class="order_item">
+  <div class="order_item" style="background:#f1f1f1">
     <div v-if="data.length > 0">
       <van-panel :title="o.customer.realname" :status="o.status" v-for="o in data" :key="o.id">
         <!-- {{o}} -->
         <van-row>
-          <van-col :span="4" style="text-align:center"><van-icon name="balance-o" /></van-col>
-          <van-col :span="10">总额： {{o.total}}</van-col>
-          <!-- <van-col :span="10">收益： {{}}</van-col> -->
-        </van-row>
-        <van-row>
-          <van-col :span="4" style="text-align:center"><van-icon name="clock-o" /></van-col>
-          <van-col :span="20">下单时间：{{o.orderTime | datefmt}}</van-col>
-        </van-row>
-        <van-row>
-          <van-col :span="4" style="text-align:center"><van-icon name="orders-o" /></van-col>
-          <van-col :span="20">
-            服务产品：{{o.orderLines[0].product.name}}
+          <van-col span="4">
+            <div class="order_img"><img src="../assets/wm_logo.jpeg" alt=""></div>
           </van-col>
-        </van-row>
-        <van-row>
-          <van-col :span="4" style="text-align:center"><van-icon name="description" /></van-col>
-          <van-col :span="20">
-            服务内容：{{o.orderLines[0].product.description}}
+          <van-col span="20">
+            <van-row style="margin-top:.8em">
+              <van-col :span="4" style="text-align:center"><van-icon name="orders-o" /></van-col>
+              <van-col :span="20">
+                订单名称：{{o.orderLines[0].product.name}}
+              </van-col>
+            </van-row>
+            <van-row>
+              <van-col :span="4" style="text-align:center"><van-icon name="balance-o" /></van-col>
+              <van-col :span="10">总价： {{o.total}}</van-col>
+            </van-row>
+          
+            <van-row>
+              <van-col :span="4" style="text-align:center"><van-icon name="clock-o" /></van-col>
+              <van-col :span="20">下单时间：{{o.orderTime | datefmt}}</van-col>
+            </van-row>
+            <!-- <van-row>
+              <van-col :span="4" style="text-align:center"><van-icon name="description" /></van-col>
+              <van-col :span="20">
+                服务内容：{{o.orderLines[0].product.description}}
+              </van-col>
+            </van-row> -->
+            <van-row style="margin-bottom:.8em">
+              <van-col :span="4" style="text-align:center"><van-icon name="location-o" /></van-col>
+              <van-col :span="20">送单地址： {{o.address.province+" "+o.address.city+" "+o.address.area}}</van-col>
+            </van-row>
           </van-col>
-        </van-row>
-        <van-row>
-          <van-col :span="4" style="text-align:center"><van-icon name="location-o" /></van-col>
-          <van-col :span="20">地址： {{o.address.province+" "+o.address.city+" "+o.address.area}}</van-col>
         </van-row>
         <div slot="footer" style="text-align:right">
           <div v-if="o.status === '待接单'">
@@ -59,3 +66,11 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.order_img img {
+  width: 45px;
+  height: 45px;
+  margin: 1em 0 0 1em;
+}
+</style>
