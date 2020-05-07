@@ -62,7 +62,7 @@ export default {
       this.login(this.form)
       .then(()=>{
         //跳转到首页
-        this.$router.push({path:'/manager/user'})
+        this.$router.push({path:'/manager/order'})
       })
     }
   }
