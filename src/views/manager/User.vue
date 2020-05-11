@@ -23,8 +23,10 @@
           </div>
         </van-col>
         <van-col :span="16">
+          <!-- {{waiterInfo}} -->
           <div class="name" @click="toEditWaiterInfoHandler">{{info.name}}</div>
-          <div style="color:#bbb">再忙，也要记得吃饭呦~</div>
+          <!-- <div >{{waiterInfo.realname}}</div> -->
+          <div style="color:#bbb">{{waiterInfo.realname}}，再忙也要记得吃饭呦~</div>
         </van-col>
       </van-row>
     </div>

@@ -96,7 +96,7 @@ export default {
         ...mapActions('income',['WaiterCash']),
         // 提现
         WithdrawHandler(){
-            if(this.value1 < this.waiterInfo.money){
+            // if(this.value1 < this.waiterInfo.money){
                 // console.log('value1',this.waiterInfo.money)
                 this.params = {
                     waiterid:this.info.id,
@@ -108,9 +108,9 @@ export default {
                     this.$router.push({path:'./user'})
                     Toast('已提交申请')
                 })
-            }else {
-                Toast('余额不足')
-            }
+            // }else {
+            //     Toast('余额不足')
+            // }
         },
         // 返回到我的页面
         backHandler(){
