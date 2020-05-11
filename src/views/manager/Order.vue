@@ -87,6 +87,12 @@ export default {
     //   warnInfo.style.marginTop = '5em'
     //   warnInfo.style.marginLeft = '10em'
     //   warnInfo.style.paddingBottom = '5em'
+    // } else {
+    //   let warnInfo = document.getElementById('warnInfo1')
+    //   // warnInfo.innerHTML = ''
+    //   warnInfo.style.marginTop = '0'
+    //   warnInfo.style.marginLeft = '0'
+    //   warnInfo.style.paddingBottom = '0'
     // }
     // if(this.ordersStatusFilter('待服务').length == 0){
     //   let warnInfo = document.getElementById('warnInfo2')
@@ -94,6 +100,12 @@ export default {
     //   warnInfo.style.marginTop = '5em'
     //   warnInfo.style.marginLeft = '10em'
     //   warnInfo.style.paddingBottom = '5em'
+    // } else {
+    //   let warnInfo = document.getElementById('warnInfo2')
+    //   // warnInfo.innerHTML = ''
+    //   warnInfo.style.marginTop = '0'
+    //   warnInfo.style.marginLeft = '0'
+    //   warnInfo.style.paddingBottom = '0'
     // }
     // if(this.ordersStatusFilter('待确认').length = 0){
     //   let warnInfo = document.getElementById('warnInfo3')

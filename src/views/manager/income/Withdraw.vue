@@ -29,7 +29,6 @@
                     <van-col :span="4">
                         <van-field
                             style="font-size:28px;font-weight:bold;"
-                            v-model="value"
                             label="￥"/>
                     </van-col>
                     <van-col :span="20">
@@ -38,13 +37,13 @@
                             clickable
                             :value="value1"
                             @touchstart.native.stop="show = true"
-                            />
-                            <van-number-keyboard
+                        />
+                        <van-number-keyboard
                             v-model="value1"
                             :show="show"
                             :maxlength="6"
                             @blur="show = false"
-                            />
+                        />
                     </van-col>
                 </van-row>
                 <!-- 全部提现 -->
@@ -98,14 +97,15 @@ export default {
         // 提现
         WithdrawHandler(){
             if(this.value1 < this.waiterInfo.money){
+                // console.log('value1',this.waiterInfo.money)
                 this.params = {
                     waiterid:this.info.id,
                     money:this.value1
                 }
-                console.log(this.params)
+                // console.log(sthis.params)
                 this.WaiterCash(this.params)
                 .then(res=>{
-                    this.$router.push({path:'./income_list'})
+                    this.$router.push({path:'./user'})
                     Toast('已提交申请')
                 })
             }else {
@@ -114,7 +114,7 @@ export default {
         },
         // 返回到我的页面
         backHandler(){
-            this.$router.push({path:'./income_list'})
+            this.$router.push({path:'./user'})
         }
     
     },     

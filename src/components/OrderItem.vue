@@ -1,7 +1,7 @@
 <template>
   <div class="order_item" style="background:#f1f1f1">
     <div v-if="data.length > 0">
-      <van-panel :title="o.customer.realname" :status="o.status" v-for="o in data" :key="o.id">
+      <van-panel :title="o.customer.username" :status="o.status" v-for="o in data" :key="o.id">
         <!-- {{o}} -->
         <van-row>
           <van-col span="4">

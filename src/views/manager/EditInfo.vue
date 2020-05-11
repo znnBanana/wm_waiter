@@ -18,6 +18,14 @@
     <!-- /顶部导航栏 -->
     
     <!-- 员工信息 -->
+    <van-row>
+      <van-col span="12">
+        <van-cell title="请选择心仪头像" size="large" />
+      </van-col>
+      <van-col span="12">
+        <van-uploader v-model="fileList" max-count="1" :after-read="afterRead" />
+      </van-col>
+    </van-row>
     <van-cell-group>
       <van-field
         v-model="waiterInfo.username"
@@ -95,7 +103,8 @@ import {mapActions,mapGetters,mapState} from 'vuex'
 export default {
   data() {
     return {
-  
+      fileList: [],
+      photo: []
     }
   },
   created() {
@@ -110,6 +119,19 @@ export default {
   },
   methods: {
     ...mapActions('user',['EarningWaiter','WaiterById','UpdateWaiter']),
+    afterRead(file) {
+            //构造一个 FormData，把后台需要发送的参数添加
+            this.formData = new FormData(); 
+            //接口需要传的参数
+            this.photo.push(file)
+            this.photo.map((item,index)=>{
+                if(index == 0){
+                    this.formData.append('file1',item.file)
+                }
+            })
+            console.log(this.formData.getAll('file1'),'file1')
+            // console.log(this.formData.getAll('file2'),'file2')
+        },
     // 回到我的页面
     onClickLeft(){
         this.$router.push({path:'./user'})
@@ -119,6 +141,7 @@ export default {
       this.params = {
         id:this.info.id,
         type:'waiter',
+        imgPhoto: 'http://134.175.100.63:8686/group1/M00/00/03/rBAABV62HeyAAOAUAABbY8DUoYs369.jpg',
         password:this.waiterInfo.password,
         money:this.waiterInfo.money,
         username:this.waiterInfo.username,
@@ -135,6 +158,7 @@ export default {
       .then(res=>{
         // console.log(this.info.id)
         this.WaiterById(this.info.id)
+        this.$router.push({path:'./user'})
       })
     },
     // 返回到登录页面

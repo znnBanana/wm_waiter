@@ -43,7 +43,8 @@ export default {
             }
             axios.post('http://134.175.100.63:5588/user/realname?user_id='+this.info.id, this.formData)
             .then(res => { 
-                Toast.success(res.data);　　　　
+                Toast.success(res.data);　
+                this.$router.push({path:'./user'})　　　
         　　});
             // 此时不需要再调用一次接口
             // this.WaiterRealname(this.params)
@@ -61,8 +62,8 @@ export default {
                     this.formData.append('file2',item.file)
                 }
             })
-            console.log(this.formData.getAll('file1'),'file1')
-            console.log(this.formData.getAll('file2'),'file2')
+            // console.log(this.formData.getAll('file1'),'file1')
+            // console.log(this.formData.getAll('file2'),'file2')
         },
         // 返回到我的页面
         backHandler(){
